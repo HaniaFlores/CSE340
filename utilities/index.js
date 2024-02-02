@@ -60,6 +60,26 @@ Util.buildClassificationGrid = async function(data){
 }
 
 
+/* **************************************
+* Build the details view HTML
+* ************************************ */
+Util.buildCarDetailsGrid = async function(data){
+  let grid = `
+  <img class='car-img' src='${data.inv_image}' alt='Image of ${data.inv_make} ${data.inv_model} on CSE Motors'>
+  <div class='details-box'>
+  <h2 class="car-name">${data.inv_make} ${data.inv_model} Details</h2>
+  <p class="price">Price: ${new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD"
+  }).format(data.inv_price)}</p>
+  <p class="miles">Miles: ${new Intl.NumberFormat("en-US").format(data.inv_miles)}</p>
+  <p class="description">${data.inv_description}</p>
+  <p class="color">Color: ${data.inv_color}</p>
+  </div>`
+
+  return grid
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
