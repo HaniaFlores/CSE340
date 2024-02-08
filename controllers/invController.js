@@ -36,4 +36,17 @@ invCont.buildByInventoryId = async function (req, res, next) {
 }
 
 
+/* ***************************
+ *  Build error view
+ * ************************** */
+invCont.buildError = (req, res, next) => {
+  try {
+    let err = new Error(" Error 500");
+    err.status = 500;
+    throw err;
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = invCont
