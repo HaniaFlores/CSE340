@@ -11,22 +11,26 @@
    </ul>
   <% } %>
 
-<form id="registerForm" action="/account/register" method="post">
-    <label for="account_firstname">First Name:</label>
-    <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
+<div class="form-display">
 
-    <label for="account_lastname">Last Name:</label>
-    <input type="text" name="account_lastname" id="accountLastname" required value="<%= locals.account_lastname %>">
+    <form id="registerForm" action="/account/register" method="post">
+        <label for="account_firstname">First Name:</label>
+        <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
 
-    <label for="account_email">Email Address:</label>
-    <input type="text" name="account_email" id="accountEmail" required value="<%= locals.account_email %>">
+        <label for="account_lastname">Last Name:</label>
+        <input type="text" name="account_lastname" id="accountLastname" required value="<%= locals.account_lastname %>">
 
-    <div>
-        <label for="accountPassword">Password:</label> 
-        <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span> 
-        <input type="password" name="account_password" id="accountPassword" required 
-        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-    </div>
+        <label for="account_email">Email Address:</label>
+        <input type="text" name="account_email" id="accountEmail" required value="<%= locals.account_email %>">
 
-    <input type="submit" value="Register">
-</form>
+        <div>
+            <label for="accountPassword">Password:</label> 
+            <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span> 
+            <input type="password" name="account_password" id="accountPassword" required 
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+        </div>
+
+        <input type="submit" value="Register">
+    </form>
+
+</div>
