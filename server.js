@@ -56,9 +56,6 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
  * Routes
  *************************/
 app.use(static)
-// app.get("/", function (req, res) {
-//   res.render("index", {title: "Home"})
-// })
 
 // Index Route
 app.get("/", utilities.handleErrors(baseController.buildHome))
