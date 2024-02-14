@@ -3,6 +3,7 @@ const express = require("express")
 const router = new express.Router() 
 const invController = require("../controllers/invController")
 const middleware = require("../utilities/index");
+const mngValidate = require("../utilities/management-validation")
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", middleware.handleErrors(invController.buildByClassificationId));
@@ -14,6 +15,20 @@ router.get("/detail/:inventoryId", middleware.handleErrors(invController.buildBy
 router.get(
     "/error/500",
     middleware.handleErrors(invController.buildError)
-  );
+);
+
+// Route to inventory management view
+router.get("/", middleware.handleErrors(invController.buildManagement));
+
+//Route to add classification view
+router.get("/add-classification", middleware.handleErrors(invController.buildAddClassification));
+
+// Process the new classification data
+router.post(
+    "/add-classification",
+    mngValidate.classificationRules(),
+    mngValidate.checkClassificationData,
+    middleware.handleErrors(invController.addClassification)
+)
 
 module.exports = router;

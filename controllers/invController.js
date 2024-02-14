@@ -49,4 +49,62 @@ invCont.buildError = (req, res, next) => {
   }
 };
 
+/* ***************************
+ *  Management View
+ * ************************** */
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./inventory/management", {
+    title: "Vehicle Inventory Management",
+    errors:null,
+    nav,
+  });
+};
+
+
+/* ***************************
+ *  Build Add Classification View
+ * ************************** */
+invCont.buildAddClassification = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./inventory/add-classification", {
+    title: "Add Classification",
+    errors:null,
+    nav,
+  });
+}
+
+/* ***************************
+ *  Add Classification Process
+ * ************************** */
+invCont.addClassification = async function (req, res) {
+  
+  const { classification_name } = req.body
+  const result = await invModel.addClassification(classification_name)
+  let nav = await utilities.getNav()
+
+
+  if (result) {
+    req.flash(
+      "notice",
+      `Congratulations, ${classification_name} has been added to the classification list.`
+    );
+    res.status(201).render("./inventory/management", {
+      title: "Vehicle Inventory Management",
+      nav,
+      errors: null,
+    });
+  } else {
+    req.flash(
+      "notice",
+      "Sorry, there was an error processing the new classification. Please try again."
+    );
+    res.status(501).render("./inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+      errors: null,
+    });
+  }
+};
+
 module.exports = invCont
