@@ -17,7 +17,7 @@ router.get(
     middleware.handleErrors(invController.buildError)
 );
 
-// Route to inventory management view
+// Route to management view
 router.get("/", middleware.handleErrors(invController.buildManagement));
 
 //Route to add classification view
@@ -30,5 +30,9 @@ router.post(
     mngValidate.checkClassificationData,
     middleware.handleErrors(invController.addClassification)
 )
+
+router.get("/add-inventory", middleware.handleErrors(invController.buildAddInventoryView))
+router.post("/add-inventory", mngValidate.inventoryRules(), mngValidate.checkInventoryData, middleware.handleErrors(invController.addInventory))
+
 
 module.exports = router;
