@@ -187,7 +187,7 @@ Upgrades Content
   justify-content: center;
 }
 
-.up-link {
+.up-link, .mng-view p a:hover{
   text-decoration: underline;
   color: blue;
 }
@@ -197,7 +197,7 @@ Footer
 *******/
 footer {
   margin-top: 2rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 footer a {
@@ -333,6 +333,17 @@ Form CSS
   border: 1px solid #ccc;
 }
 
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px; 
+  background-color: #f9f9f9; 
+}
+
 /******** 
 Large Screen CSS 
 *******/
@@ -438,5 +449,9 @@ Large Screen CSS
     grid-column: 2/3;
     width: 95%;
   }
-  
+
+  .form-display {
+    max-width: 600px;
+    margin: 0;
+  }
 }
