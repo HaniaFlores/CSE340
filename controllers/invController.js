@@ -163,14 +163,13 @@ invCont.addInventory = async function(req, res){
           nav,
           errors: null,
         })
-      }else{
+      }else{ //This view is not rendering, even when an error occurs.
         req.flash("notice", "Sorry, adding inventory failed. Please try again.")
         req.status(501).render("inventory/add-inventory",
         {
           title: "Add Inventory",
           nav,
           classificationList,
-          errors: null,
       })
 }}
 
